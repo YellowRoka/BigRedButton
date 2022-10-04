@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'CentralIcons.dart';
 
 class InternalCircle extends StatelessWidget {
+  
   final double              size;
   final double              innerCircleSize;
   final double              offsetValue;

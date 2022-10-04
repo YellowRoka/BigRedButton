@@ -5,6 +5,7 @@ import 'BigRedButtonParts/AnimatedCircle.dart';
 import 'BigRedButtonParts/ExternalCircle.dart';
 
 class BigRedButton extends StatefulWidget {
+
   final int    milisecTimer;
   final double size;
 
@@ -15,6 +16,7 @@ class BigRedButton extends StatefulWidget {
 }
 
 class _BigRedButtonState extends State<BigRedButton> with TickerProviderStateMixin {
+
   late double _innerCircleSize;
   late double _outerCircleSize;
 
@@ -38,7 +40,7 @@ class _BigRedButtonState extends State<BigRedButton> with TickerProviderStateMix
       ..addListener( () => 
         setState( 
           (){
-            _offsetValue = internalCirlecontroller.value*20;
+            _offsetValue = internalCirlecontroller.value * 20;
 
             if( internalCirlecontroller.isCompleted ){
               animatedCirclecontroller.forward();

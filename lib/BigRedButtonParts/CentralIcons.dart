@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CentralIcons extends StatefulWidget {
+  
   final bool   isAnimationFinished;
   final int    milisecTimer;
   final double size;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimatedCircle extends StatelessWidget {
+  
   final AnimationController controller;
   final double              size;
 
