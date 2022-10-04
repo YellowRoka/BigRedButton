@@ -4,6 +4,7 @@ class CentralIcons extends StatefulWidget {
   final bool   isAnimationFinished;
   final int    milisecTimer;
   final double size;
+
   const CentralIcons({ Key? key, required this.isAnimationFinished, required this.milisecTimer, required this.size }) : super(key: key);
 
   @override
@@ -12,20 +13,19 @@ class CentralIcons extends StatefulWidget {
 
 class _CentralIconsState extends State<CentralIcons> with TickerProviderStateMixin {
   
-  late int  counter;
-
+  late int                 counter;
   late AnimationController controller;
 
   @override
   void initState(){
-    counter = (widget.milisecTimer/1000).ceil();
+    counter    = ( widget.milisecTimer / 1000 ).ceil();
     controller = AnimationController(
       duration: Duration( milliseconds: widget.milisecTimer ),
       vsync:    this,
     )
     ..addListener( (){ 
       setState(() {
-        counter = 1 + (widget.milisecTimer/1000).ceil() - (controller.value*(widget.milisecTimer/1000).ceil()).ceil();
+        counter = 1 + counter - ( controller.value * counter ).ceil();
       });
       }
     );

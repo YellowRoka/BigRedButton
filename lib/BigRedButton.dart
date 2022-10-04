@@ -21,8 +21,8 @@ class _BigRedButtonState extends State<BigRedButton> with TickerProviderStateMix
   double _offsetValue     = 0;
   bool   _isClicked       = false;
 
-  late AnimationController controller;
-  late AnimationController controller2;
+  late AnimationController internalCirlecontroller;
+  late AnimationController animatedCirclecontroller;
 
   @override
   void initState(){
@@ -30,7 +30,7 @@ class _BigRedButtonState extends State<BigRedButton> with TickerProviderStateMix
    _innerCircleSize = widget.size;
    _outerCircleSize = widget.size+20;
 
-    controller =
+    internalCirlecontroller =
       AnimationController(
         duration: const Duration( milliseconds: 500 ),
         vsync:    this 
@@ -38,24 +38,24 @@ class _BigRedButtonState extends State<BigRedButton> with TickerProviderStateMix
       ..addListener( () => 
         setState( 
           (){
-            _offsetValue = controller.value*20;
+            _offsetValue = internalCirlecontroller.value*20;
 
-            if( controller.isCompleted ){
-              controller2.forward();
+            if( internalCirlecontroller.isCompleted ){
+              animatedCirclecontroller.forward();
             }
           } 
         ) 
       );
     
-    controller2 = AnimationController(
+    animatedCirclecontroller = AnimationController(
       duration: Duration( milliseconds: widget.milisecTimer ),
       vsync:    this 
     )
     ..addListener( () => 
       setState( 
         (){
-          if( controller2.isCompleted ){
-            controller.reverse();
+          if( animatedCirclecontroller.isCompleted ){
+            internalCirlecontroller.reverse();
           }
         } 
       ) 
@@ -70,19 +70,20 @@ class _BigRedButtonState extends State<BigRedButton> with TickerProviderStateMix
       alignment: Alignment.center,
       children:  [
 
-        ExternalCircle( offsetValue: _offsetValue, outerCircleSize: _outerCircleSize ),
-        AnimatedCircle( controller: controller2, size: widget.size),
+        ExternalCircle( offsetValue: _offsetValue,             outerCircleSize: _outerCircleSize ),
+        AnimatedCircle( controller:  animatedCirclecontroller, size:            widget.size      ),
         InternalCircle( 
           innerCircleSize: _innerCircleSize,
           offsetValue:     _offsetValue,
-          milisecTimer:    widget.milisecTimer,
           isClicked:       _isClicked,
-          controller:      controller,
+
+          milisecTimer:    widget.milisecTimer,
+          controller:      internalCirlecontroller,
           size:            widget.size,
-          
+
           cbk: (){
             setState( (){
-              controller.forward();
+              internalCirlecontroller.forward();
               _isClicked = true;
             } );
           }, 
@@ -94,8 +95,8 @@ class _BigRedButtonState extends State<BigRedButton> with TickerProviderStateMix
 
   @override
   void dispose(){
-    controller.dispose();
-    controller2.dispose();
+    internalCirlecontroller.dispose();
+    animatedCirclecontroller.dispose();
     super.dispose();
   }
 

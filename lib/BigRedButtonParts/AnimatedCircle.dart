@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AnimatedCircle extends StatelessWidget {
   final AnimationController controller;
-  final double size;
+  final double              size;
 
   const AnimatedCircle({Key? key, required this.controller, required this.size}) : super(key: key);
 

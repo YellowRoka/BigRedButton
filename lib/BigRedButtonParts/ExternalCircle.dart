@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ExternalCircle extends StatelessWidget {
   final double outerCircleSize;
   final double offsetValue;
+  
   const ExternalCircle({Key? key, required this.outerCircleSize, required this.offsetValue}) : super(key: key);
 
   @override
