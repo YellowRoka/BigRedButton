@@ -25,7 +25,7 @@ class _CentralIconsState extends State<CentralIcons> with TickerProviderStateMix
     )
     ..addListener( (){ 
       setState(() {
-        counter = 1+(widget.milisecTimer/1000).ceil() - (controller.value*(widget.milisecTimer/1000).ceil()).ceil();
+        counter = 1 + (widget.milisecTimer/1000).ceil() - (controller.value*(widget.milisecTimer/1000).ceil()).ceil();
       });
       }
     );

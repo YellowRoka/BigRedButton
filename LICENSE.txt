@@ -1,0 +1,6 @@
+This is a simple sample code for Flutter developers.
+This source code is for educational purposes only.
+If you want to use it for business purposes, please contact me:
+fonadgergo@hotmail.com.
+
+All rights reserved.
