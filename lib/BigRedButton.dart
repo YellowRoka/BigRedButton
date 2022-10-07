@@ -54,12 +54,14 @@ class _BigRedButtonState extends State<BigRedButton> with TickerProviderStateMix
       vsync:    this 
     )
     ..addListener( () => 
-      setState( 
+      setState(
         (){
           if( animatedCirclecontroller.isCompleted ){
             internalCirlecontroller.reverse();
+            animatedCirclecontroller.reset();
+            _isClicked = false;
           }
-        } 
+        }
       ) 
     );
 
@@ -83,12 +85,10 @@ class _BigRedButtonState extends State<BigRedButton> with TickerProviderStateMix
           controller:      internalCirlecontroller,
           size:            widget.size,
 
-          cbk: (){
-            setState( (){
+          cbk: () => setState( (){
               internalCirlecontroller.forward();
               _isClicked = true;
-            } );
-          }, 
+            } )
         ),
         
       ]
