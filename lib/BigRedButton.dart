@@ -70,28 +70,31 @@ class _BigRedButtonState extends State<BigRedButton> with TickerProviderStateMix
 
   @override
   Widget build( BuildContext context ){
-    return Stack(
-      alignment: Alignment.center,
-      children:  [
-
-        ExternalCircle( offsetValue: _offsetValue,             outerCircleSize: _outerCircleSize ),
-        AnimatedCircle( controller:  animatedCirclecontroller, size:            widget.size      ),
-        InternalCircle( 
-          innerCircleSize: _innerCircleSize,
-          offsetValue:     _offsetValue,
-          isClicked:       _isClicked,
-
-          milisecTimer:    widget.milisecTimer,
-          controller:      internalCirlecontroller,
-          size:            widget.size,
-
-          cbk: () => setState( (){
-              internalCirlecontroller.forward();
-              _isClicked = true;
-            } )
-        ),
-        
-      ]
+    return GestureDetector(
+      onTap: () => setState(
+        (){
+          internalCirlecontroller.forward();
+          _isClicked = true;
+        }
+      ),
+      
+      child: Stack(
+        alignment: Alignment.center,
+        children:  [
+    
+          ExternalCircle( offsetValue: _offsetValue,             outerCircleSize: _outerCircleSize ),
+          AnimatedCircle( controller:  animatedCirclecontroller, size:            widget.size      ),
+          InternalCircle( 
+            innerCircleSize: _innerCircleSize,
+            offsetValue:     _offsetValue,
+            isClicked:       _isClicked,
+            milisecTimer:    widget.milisecTimer,
+            controller:      internalCirlecontroller,
+            size:            widget.size,
+          ),
+          
+        ]
+      ),
     );
   }
 

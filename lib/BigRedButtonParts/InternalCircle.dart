@@ -10,7 +10,6 @@ class InternalCircle extends StatelessWidget {
   final int                 milisecTimer;
   final bool                isClicked;
   final AnimationController controller;
-  final VoidCallback        cbk;
 
   const InternalCircle({
     Key? key, 
@@ -19,7 +18,6 @@ class InternalCircle extends StatelessWidget {
     required this.milisecTimer, 
     required this.isClicked, 
     required this.controller, 
-    required this.cbk, 
     required this.size
   }) : super(key: key);
 
@@ -47,7 +45,6 @@ class InternalCircle extends StatelessWidget {
       ),
   
       child: GestureDetector(
-        onTap: cbk,
         child: Center(
           child: CentralIcons( 
             isAnimationFinished: controller.isCompleted,
